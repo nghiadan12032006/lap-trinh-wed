@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Tất cả sản phẩm | Nghĩa STORE</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial}
+body{background:#f5f5f5}
+
+header{
+  background:#fff;display:flex;justify-content:space-between;align-items:center;
+  padding:15px 60px;box-shadow:0 2px 8px rgba(0,0,0,.08);
+  position:sticky;top:0;z-index:10
+}
+.logo{font-size:24px;font-weight:700;color:#e53935}
+nav a{margin-left:25px;text-decoration:none;color:#333;font-weight:500}
+nav span{background:red;color:#fff;padding:2px 7px;border-radius:50%;font-size:12px}
+
+.container{display:flex;gap:30px;padding:40px 60px}
+
+.sidebar{
+  width:240px;background:#fff;padding:20px;border-radius:12px;
+  box-shadow:0 4px 15px rgba(0,0,0,.05)
+}
+.sidebar h4{margin:15px 0 10px}
+.sidebar label{display:block;margin:8px 0;font-size:14px;cursor:pointer}
+
+.main{flex:1}
+.main-header{
+  display:flex;justify-content:space-between;align-items:center;margin-bottom:25px
+}
+select{padding:8px 12px;border-radius:8px}
+
+.shop-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:25px
+}
+
+.shop-card{
+  background:#fff;border-radius:14px;padding:15px;
+  box-shadow:0 6px 20px rgba(0,0,0,.08);transition:.3s
+}
+.shop-card:hover{transform:translateY(-5px)}
+.shop-card img{
+  width:100%;height:200px;object-fit:cover;border-radius:12px
+}
+.shop-card h4{margin:12px 0 5px;font-size:16px}
+.price{color:#e53935;font-weight:700;margin-bottom:10px}
+.shop-card button{
+  width:100%;padding:10px;border:none;border-radius:8px;
+  background:#1976d2;color:#fff;font-weight:600;cursor:pointer
+}
+.shop-card button:hover{background:#0d47a1}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">Nghĩa STORE</div>
+  <nav>
+    <a href="index.html">Trang Chủ</a>
+    <a href="shop.html">Sản Phẩm</a>
+    <a href="cart.html">Giỏ Hàng <span id="cartCount">0</span></a>
+  </nav>
+</header>
+
+<div class="container">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <h4>Danh mục</h4>
+  <label><input type="checkbox" class="cat" value="thethao"> Giày thể thao</label>
+  <label><input type="checkbox" class="cat" value="danam"> Giày da nam</label>
+  <label><input type="checkbox" class="cat" value="congso"> Giày công sở</label>
+  <label><input type="checkbox" class="cat" value="luoi"> Giày lười</label>
+
+  <h4>Khoảng giá</h4>
+  <label><input type="checkbox" class="priceRange" value="0-500000"> Dưới 500k</label>
+  <label><input type="checkbox" class="priceRange" value="500000-1000000"> 500k - 1 triệu</label>
+  <label><input type="checkbox" class="priceRange" value="1000000-9999999"> Trên 1 triệu</label>
+</aside>
+
+<!-- MAIN -->
+<main class="main">
+  <div class="main-header">
+    <h2>🛒 TẤT CẢ SẢN PHẨM</h2>
+    <select id="sortSelect">
+      <option value="popular">Phổ biến</option>
+      <option value="asc">Giá tăng dần</option>
+      <option value="desc">Giá giảm dần</option>
+    </select>
+  </div>
+
+  <div class="shop-grid" id="shopGrid">
+
+    <!-- mỗi sản phẩm BẮT BUỘC có đủ data -->
+    <div class="shop-card" data-id="atonat" data-name="Atonat Basic" data-category="thethao" data-price="350000">
+      <img src="../IMG/atonat.jpg">
+      <h4>Atonat Basic</h4>
+      <div class="price">350.000₫</div>
+      <button onclick="addToCart(this)">Thêm vào giỏ</button>
+    </div>
+
+    <div class="shop-card" data-id="nangdong" data-name="Giày Năng Động" data-category="thethao" data-price="390000">
+      <img src="../IMG/giay1.jpg">
+      <h4>Giày Năng Động</h4>
+      <div class="price">390.000₫</div>
+      <button onclick="addToCart(this)">Thêm vào giỏ</button>
+    </div>
+
+    <div class="shop-card" data-id="trang" data-name="Giày Trắng Đơn Giản" data-category="thethao" data-price="420000">
+      <img src="../IMG/OIP.jpg">
+      <h4>Giày Trắng Đơn Giản</h4>
+      <div class="price">420.000₫</div>
+      <button onclick="addToCart(this)">Thêm vào giỏ</button>
+    </div>
+
+    <div class="shop-card" data-id="chaybo" data-name="Giày Chạy Bộ" data-category="thethao" data-price="480000">
+      <img src="../IMG/OIP (2).jpg">
+      <h4>Giày Chạy Bộ</h4>
+      <div class="price">480.000₫</div>
+      <button onclick="addToCart(this)">Thêm vào giỏ</button>
+    </div>
+
+    <div class="shop-card" data-id="fashion1" data-name="Giày Fashion 01" data-category="danam" data-price="520000">
+      <img src="../IMG/OIP (3).jpg">
+      <h4>Giày Fashion 01</h4>
+      <div class="price">520.000₫</div>
+      <button onclick="addToCart(this)">Thêm vào giỏ</button>
+    </div>
+
+    <div class="shop-card" data-id="fashion2" data-name="Giày Fashion 02" data-category="congso" data-price="499000">
+      <img src="../IMG/OIP (4).jpg">
+      <h4>Giày Fashion 02</h4>
+      <div class="price">499.000₫</div>
+      <button onclick="addToCart(this)">Thêm vào giỏ</button>
+    </div>
+
+    <div class="shop-card" data-id="vintage" data-name="Giày Vintage" data-category="danam" data-price="450000">
+      <img src="../IMG/OIP (5).jpg">
+      <h4>Giày Vintage</h4>
+      <div class="price">450.000₫</div>
+      <button onclick="addToCart(this)">Thêm vào giỏ</button>
+    </div>
+
+    <div class="shop-card" data-id="cute" data-name="Giày Nữ Cute" data-category="luoi" data-price="470000">
+      <img src="../IMG/OIP (6).jpg">
+      <h4>Giày Nữ Cute</h4>
+      <div class="price">470.000₫</div>
+      <button onclick="addToCart(this)">Thêm vào giỏ</button>
+    </div>
+    <div class="shop-card" data-id="caocap" data-name="Giày Nam Cao Cấp" data-category="danam" data-price="650000">
+<img src="../IMG/OIP (7).jpg"><h4>Giày Nam Cao Cấp</h4><div class="price">650.000₫</div>
+<button onclick="addToCart(this)">Thêm vào giỏ</button></div>
+
+<div class="shop-card" data-id="prorunner" data-name="Giày Pro Runner" data-category="thethao" data-price="710000">
+<img src="../IMG/hihi.jpg"><h4>Giày Pro Runner</h4><div class="price">710.000₫</div>
+<button onclick="addToCart(this)">Thêm vào giỏ</button></div>
+ <div class="shop-card" data-id="chaybo" data-name="Giày Chạy Bộ" data-category="thethao" data-price="480000">
+      <img src="../IMG/OIP (2).jpg">
+      <h4>Giày Chạy Bộ</h4>
+      <div class="price">480.000₫</div>
+      <button onclick="addToCart(this)">Thêm vào giỏ</button>
+    </div>
+
+    <div class="shop-card" data-id="fashion1" data-name="Giày Fashion 01" data-category="danam" data-price="520000">
+      <img src="../IMG/OIP (3).jpg">
+      <h4>Giày Fashion 01</h4>
+      <div class="price">520.000₫</div>
+      <button onclick="addToCart(this)">Thêm vào giỏ</button>
+    </div>
+
+    <div class="shop-card" data-id="fashion2" data-name="Giày Fashion 02" data-category="congso" data-price="499000">
+      <img src="../IMG/OIP (4).jpg">
+      <h4>Giày Fashion 02</h4>
+      <div class="price">499.000₫</div>
+      <button onclick="addToCart(this)">Thêm vào giỏ</button>
+    </div>
+
+    <div class="shop-card" data-id="vintage" data-name="Giày Vintage" data-category="danam" data-price="450000">
+      <img src="../IMG/OIP (5).jpg">
+      <h4>Giày Vintage</h4>
+      <div class="price">450.000₫</div>
+      <button onclick="addToCart(this)">Thêm vào giỏ</button>
+    </div>
+
+
+<div class="shop-card" data-id="pholoman" data-name="Pholoman Classic" data-category="congso" data-price="450000">
+<img src="../IMG/pholoman.jpg"><h4>Pholoman Classic</h4><div class="price">450.000₫</div>
+<button onclick="addToCart(this)">Thêm vào giỏ</button></div>
+
+<div class="shop-card" data-id="thethao" data-name="Giày Thể Thao" data-category="thethao" data-price="780000">
+<img src="../IMG/thethao.png"><h4>Giày Thể Thao</h4><div class="price">780.000₫</div>
+<button onclick="addToCart(this)">Thêm vào giỏ</button></div>
+
+  </div>
+</main>
+</div>
+
+<script>
+/* ================= CART ================= */
+function getCart(){return JSON.parse(localStorage.getItem("cart"))||[]}
+function saveCart(c){localStorage.setItem("cart",JSON.stringify(c))}
+function updateCartCount(){
+  document.getElementById("cartCount").innerText =
+    getCart().reduce((s,i)=>s+i.qty,0)
+}
+function addToCart(btn){
+  const card=btn.closest(".shop-card");
+  let cart=getCart();
+  let item={
+    id:card.dataset.id,
+    name:card.dataset.name,
+    price:+card.dataset.price,
+    img:card.querySelector("img").src,
+    qty:1
+  }
+  let exist=cart.find(p=>p.id===item.id);
+  exist?exist.qty++:cart.push(item);
+  saveCart(cart);
+  updateCartCount();
+}
+
+/* =============== FILTER + SORT (ĐÃ FIX) ================= */
+const grid=document.getElementById("shopGrid");
+const cards=[...document.querySelectorAll(".shop-card")];
+const cats=document.querySelectorAll(".cat");
+const prices=document.querySelectorAll(".priceRange");
+const sortSelect=document.getElementById("sortSelect");
+const original=[...cards];
+
+function applyFilterAndSort(){
+  let catVals=[...cats].filter(c=>c.checked).map(c=>c.value);
+  let priceVals=[...prices].filter(p=>p.checked);
+
+  let filtered=cards.filter(card=>{
+    let okCat=!catVals.length||catVals.includes(card.dataset.category);
+    let okPrice=!priceVals.length||priceVals.some(r=>{
+      let [min,max]=r.value.split("-");
+      let price=+card.dataset.price;
+      return price>=min&&price<=max;
+    });
+    return okCat&&okPrice;
+  });
+
+  if(sortSelect.value==="asc"){
+    filtered.sort((a,b)=>a.dataset.price-b.dataset.price);
+  }else if(sortSelect.value==="desc"){
+    filtered.sort((a,b)=>b.dataset.price-a.dataset.price);
+  }else{
+    filtered.sort((a,b)=>original.indexOf(a)-original.indexOf(b));
+  }
+
+  grid.innerHTML="";
+  filtered.forEach(c=>grid.appendChild(c));
+}
+
+cats.forEach(c=>c.addEventListener("change",applyFilterAndSort));
+prices.forEach(p=>p.addEventListener("change",applyFilterAndSort));
+sortSelect.addEventListener("change",applyFilterAndSort);
+
+updateCartCount();
+</script>
+
+</body>
+</html>

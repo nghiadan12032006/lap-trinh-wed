@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Giỏ Hàng</title>
+    <link rel="stylesheet" href="../STYLE/style.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">Nghĩa STORE</div>
+    <nav>
+        <a href="index.html">Trang Chủ</a>
+        <a href="shop.html">Sản Phẩm</a>
+        <a href="cart.html">Giỏ Hàng <span id="cart-count">0</span></a>
+        <a href="login.html">Đăng Nhập</a>
+    </nav>
+</header>
+
+<h2 class="section-title">🛒 Giỏ hàng của bạn</h2>
+
+<div class="cart-wrapper">
+    <table>
+        <thead>
+            <tr>
+                <th>Sản phẩm</th>
+                <th>Giá</th>
+                <th>Số lượng</th>
+                <th>Thành tiền</th>
+            </tr>
+        </thead>
+
+        <tbody id="cart-table"></tbody>
+    </table>
+
+    <div class="cart-total">
+        Tổng cộng: <span id="total-price">0₫</span>
+    </div>
+</div>
+
+<script src="../script.js"></script>
+<script>
+function loadCart() {
+    let cart = getCart();
+    let table = document.getElementById("cart-table");
+    let total = 0;
+
+    table.innerHTML = "";
+
+    cart.forEach(item => {
+        let thanhTien = item.price * item.quantity;
+        total += thanhTien;
+
+        table.innerHTML += `
+            <tr>
+                <td>${item.name}</td>
+                <td>${item.price.toLocaleString()}₫</td>
+                <td>${item.quantity}</td>
+                <td>${thanhTien.toLocaleString()}₫</td>
+            </tr>
+        `;
+    });
+
+    document.getElementById("total-price").innerText = total.toLocaleString() + "₫";
+}
+
+loadCart();
+</script>
+
+</body>
+</html>
